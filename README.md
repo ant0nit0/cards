@@ -1,6 +1,6 @@
-# app_papa_v2
+# Cards
 
-A new Flutter project.
+A fidelity cards manager application.
 
 ## Getting Started
 
