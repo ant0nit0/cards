@@ -122,25 +122,30 @@ class CardPreview extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   // IconButton to open the barCode in fullScreen
-                  IconButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => BarcodeFullScreen(
-                            barcode: barCodeData,
-                            color: color,
+                  barCodeData.isEmpty
+                      ? const SizedBox(
+                          width: 1.0,
+                        )
+                      : IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => BarcodeFullScreen(
+                                  barcode: barCodeData,
+                                  color: color,
+                                ),
+                              ),
+                            );
+                          },
+                          icon: Icon(
+                            Icons.fullscreen,
+                            color:
+                                MyColor.isDark(color: MyColor.fromColor(color))
+                                    ? Colors.white
+                                    : Colors.black,
                           ),
                         ),
-                      );
-                    },
-                    icon: Icon(
-                      Icons.fullscreen,
-                      color: MyColor.isDark(color: MyColor.fromColor(color))
-                          ? Colors.white
-                          : Colors.black,
-                    ),
-                  ),
                   // Barcode :
                   barCodeData.isNotEmpty
                       ? generateBarCode(barCodeData, width: width * .75)
