@@ -122,7 +122,7 @@ class CardPreview extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   // IconButton to open the barCode in fullScreen
-                  barCodeData.isEmpty
+                  barCodeData.isEmpty || barCodeData == "-1"
                       ? const SizedBox(
                           width: 1.0,
                         )

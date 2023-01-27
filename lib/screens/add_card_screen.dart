@@ -225,7 +225,8 @@ class _AddOrUpdateCardScreenState extends State<AddOrUpdateCardScreen> {
                           ),
                         ),
                         Step(
-                          title: const Text("Couleur"),
+                          title: const Text("Coul",
+                              overflow: TextOverflow.ellipsis),
                           isActive: (_stepIndex >= 1),
                           state: _stepIndex > 1
                               ? StepState.complete
@@ -238,13 +239,17 @@ class _AddOrUpdateCardScreenState extends State<AddOrUpdateCardScreen> {
                           ),
                         ),
                         Step(
-                          title: const Text("Code"),
+                          title: const Text(
+                            "Code",
+                            overflow: TextOverflow.ellipsis,
+                          ),
                           isActive: (_stepIndex >= 2),
                           state: _stepIndex == 2
                               ? StepState.editing
                               : StepState.indexed,
                           content: AddBarCodeWidget(
                             onBarCodeScanned: setBarCode,
+                            barcodeData: _barCode,
                           ),
                         )
                       ],
@@ -297,16 +302,18 @@ class _AddOrUpdateCardScreenState extends State<AddOrUpdateCardScreen> {
             color: Colors.black,
             fontWeight: FontWeight.bold,
             fontFamily: 'Poppins',
-            fontSize: 26.0,
+            fontSize: 18.0,
           ),
           child: isUpdate
               ? const Text(
                   "Modifier une carte",
                   textAlign: TextAlign.start,
+                  overflow: TextOverflow.ellipsis,
                 )
               : const Text(
                   "Ajouter une carte",
                   textAlign: TextAlign.start,
+                  overflow: TextOverflow.ellipsis,
                 ),
         ),
       ],

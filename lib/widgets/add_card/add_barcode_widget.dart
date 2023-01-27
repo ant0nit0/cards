@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 
 class AddBarCodeWidget extends StatelessWidget {
+  final String barcodeData;
   final Function onBarCodeScanned;
   const AddBarCodeWidget({
     super.key,
     required this.onBarCodeScanned,
+    this.barcodeData = "",
   });
 
   @override
@@ -21,7 +23,7 @@ class AddBarCodeWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextField(
+        TextFormField(
           onChanged: (value) {
             onBarCodeScanned(value);
           },
@@ -31,6 +33,7 @@ class AddBarCodeWidget extends StatelessWidget {
             focusedBorder: border,
             border: border,
           ),
+          initialValue: barcodeData,
         ),
         GestureDetector(
           onTap: () => _openScanner(context),

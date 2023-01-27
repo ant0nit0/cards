@@ -34,7 +34,7 @@ class AddCardContainer extends StatelessWidget {
                 child: DefaultTextStyle(
                   style: TextStyle(
                     color: Colors.black87,
-                    fontSize: 24.0,
+                    fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                     overflow: TextOverflow.ellipsis,
                     fontFamily: 'Poppins',

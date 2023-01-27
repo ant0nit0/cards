@@ -30,33 +30,37 @@ class _BarcodeFullScreenState extends State<BarcodeFullScreen> {
         iconTheme: ThemeData.light().iconTheme.copyWith(color: Colors.black),
       ),
       backgroundColor: Colors.white,
-      body: Container(
-        color: widget.color.withOpacity(.4),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Center(
-              child: Transform.rotate(
-                angle: pi * .5,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(20.0),
+      body: widget.barcode.isEmpty || widget.barcode == "-1"
+          ? const Center(
+              child: Text("Aucun code-barre"),
+            )
+          : Container(
+              color: widget.color.withOpacity(.4),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Center(
+                    child: Transform.rotate(
+                      angle: pi * .5,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(20.0),
+                        ),
+                        width: MediaQuery.of(context).size.height,
+                        height: MediaQuery.of(context).size.width * 0.65,
+                        padding: const EdgeInsets.all(30.0),
+                        child: BarcodeWidget(
+                          barcode: Barcode.code128(),
+                          data: widget.barcode,
+                          drawText: true,
+                        ),
+                      ),
+                    ),
                   ),
-                  width: MediaQuery.of(context).size.height,
-                  height: MediaQuery.of(context).size.width * 0.65,
-                  padding: const EdgeInsets.all(30.0),
-                  child: BarcodeWidget(
-                    barcode: Barcode.code128(),
-                    data: widget.barcode,
-                    drawText: true,
-                  ),
-                ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }

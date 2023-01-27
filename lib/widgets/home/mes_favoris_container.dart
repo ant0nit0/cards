@@ -54,7 +54,7 @@ class _MesFavorisContainerState extends State<MesFavorisContainer> {
                 child: DefaultTextStyle(
                   style: TextStyle(
                     color: isFav ? Colors.black87 : Colors.white,
-                    fontSize: 24.0,
+                    fontSize: 18.0,
                     fontWeight: FontWeight.bold,
                     overflow: TextOverflow.ellipsis,
                     fontFamily: 'Poppins',

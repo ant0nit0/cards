@@ -58,6 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
       size = MediaQuery.of(context).size;
       ifFirstLaunch = false;
     }
+    refreshCards();
   }
 
   @override
@@ -69,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
           children: [
             _drawTitle(),
             _drawTopContainer(),
-            isLoading ? CircularProgressIndicator() : _drawCards(),
+            isLoading ? const CircularProgressIndicator() : _drawCards(),
           ],
         ),
       ),
@@ -93,10 +94,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _drawCards() {
     if (cards.isEmpty) {
-      return const Center(
+      return Center(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 60.0),
-          child: Text('Aucune carte enregistrée'),
+          padding: const EdgeInsets.symmetric(vertical: 60.0),
+          child: onlyFav
+              ? const Text('Aucun favori enregistré')
+              : const Text('Aucune carte enregistrée'),
         ),
       );
     }
